@@ -1,15 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{54CBDEAA-49B6-48DD-9715-6F824D9DB1AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{54CBDEAA-49B6-48DD-9715-6F824D9DB1AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{6AA9340D-0690-41B0-8DBA-DFED04DE74F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{6AA9340D-0690-41B0-8DBA-DFED04DE74F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{7E324D73-17E9-46DA-A02A-A18B7F585CDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{7E324D73-17E9-46DA-A02A-A18B7F585CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{B8D609A6-D8FF-4B78-8759-7DCEEAB8B6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{B8D609A6-D8FF-4B78-8759-7DCEEAB8B6A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{54CBDEAA-49B6-48DD-9715-6F824D9DB1AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +69,11 @@ Global
 		{B8D609A6-D8FF-4B78-8759-7DCEEAB8B6A2}.Release|x64.Build.0 = Release|Any CPU
 		{B8D609A6-D8FF-4B78-8759-7DCEEAB8B6A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{B8D609A6-D8FF-4B78-8759-7DCEEAB8B6A2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6D0ED66-4EB3-49E2-A440-A89943C26D0B}
 	EndGlobalSection
 EndGlobal
