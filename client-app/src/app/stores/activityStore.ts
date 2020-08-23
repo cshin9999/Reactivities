@@ -32,17 +32,17 @@ class ActivityStore {
 
         try {
             const activities = await agent.Activities.list();
-            runInAction('loading activities',() => {
+            runInAction('loading activities', () => {
                 activities.forEach((activity) => {
                     activity.date = activity.date.split('.')[0];
                     this.activities.push(activity);
                 });
                 this.loadingInitial = false;
-            })            
+            });            
         } catch (error) {
-            runInAction('load activities error',() => {
+            runInAction('load activities error', () => {
                 this.loadingInitial = false;
-            })
+            });
             console.log(error);
         }
     };
