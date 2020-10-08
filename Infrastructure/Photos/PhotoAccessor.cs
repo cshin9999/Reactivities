@@ -1,26 +1,24 @@
-﻿using Application.Interfaces;
+﻿using System;
+using Application.Interfaces;
 using Application.Photos;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
-using CloudinaryDotNet;
-using System.Collections.Generic;
-using System.Text;
-using CloudinaryDotNet.Actions;
 
 namespace Infrastructure.Photos
 {
     public class PhotoAccessor : IPhotoAccessor
     {
         private readonly Cloudinary _cloudinary;
-
         public PhotoAccessor(IOptions<CloudinarySettings> config)
         {
-            var acc = new Account(
+            var acc = new Account
+            (
                 config.Value.CloudName,
                 config.Value.ApiKey,
                 config.Value.ApiSecret
-                );
+            );
 
             _cloudinary = new Cloudinary(acc);
         }
@@ -31,7 +29,7 @@ namespace Infrastructure.Photos
 
             if (file.Length > 0)
             {
-                using(var stream = file.OpenReadStream())
+                using (var stream = file.OpenReadStream())
                 {
                     var uploadParams = new ImageUploadParams
                     {
@@ -42,15 +40,13 @@ namespace Infrastructure.Photos
                 }
             }
 
-            if(uploadResult.Error != null)
-            {
+            if (uploadResult.Error != null)
                 throw new Exception(uploadResult.Error.Message);
-            }
 
             return new PhotoUploadResult
             {
                 PublicId = uploadResult.PublicId,
-                Url = uploadResult.SecureUrl.AbsoluteUri
+                Url = uploadResult.SecureUri.AbsoluteUri
             };
         }
 
