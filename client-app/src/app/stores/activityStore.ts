@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction, reaction } from 'mobx';
+import { observable, action, computed, runInAction, reaction, toJS } from 'mobx';
 import { SyntheticEvent } from 'react';
 import { IActivity } from '../models/activity';
 import agent from '../api/agent';
@@ -66,7 +66,7 @@ export default class ActivityStore {
     }
 
     @action createHubConnection = (activityId: string) => {
-        this.hubConnection = new HubConnectionBuilder().withUrl('http://localhost:5000/chat', {
+        this.hubConnection = new HubConnectionBuilder().withUrl(process.env.REACT_APP_API_CHAT_URL!, {
             accessTokenFactory: () => this.rootStore.commonStore.token!
         }).configureLogging(LogLevel.Information).build();
 
@@ -136,7 +136,7 @@ export default class ActivityStore {
                 });
                 this.activityCount = activityCount;
                 this.loadingInitial = false;
-            });            
+            });
         } catch (error) {
             runInAction('load activities error', () => {
                 this.loadingInitial = false;
@@ -149,7 +149,7 @@ export default class ActivityStore {
         let activity: any = this.activities.filter(a => a.id === id)[0];
         if (activity) {
             this.activity = activity;
-            return activity;
+            return toJS(activity);
         } else {
             this.loadingInitial = true;
             try {
@@ -160,7 +160,7 @@ export default class ActivityStore {
                     this.activities.push(activity);
                     this.loadingInitial = false;
                 });
-                history.push(`/activities/${activity.id}`)
+                return toJS(activity);
             } catch (error) {
                 runInAction('getting activity error', () => {
                     this.loadingInitial = false;
